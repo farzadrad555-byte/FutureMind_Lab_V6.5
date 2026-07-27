@@ -1,0 +1,44 @@
+{
+    "products": [
+        {
+            "id": "hunter-x-v44",
+            "name": "Hunter-X V44 Professional",
+            "category": "AI Trading Intelligence",
+            "version": "V44 Professional",
+            "price": "$49",
+            "status": "Active",
+            "page": "hunter-x.html",
+            "description": "AI Market Intelligence Platform"
+        },
+        {
+            "id": "science-ai-pack",
+            "name": "Science Teacher AI Pack",
+            "category": "Education AI",
+            "version": "V1",
+            "price": "$29",
+            "status": "Active",
+            "page": "science-ai-pack.html",
+            "description": "AI tools for science educators"
+        },
+        {
+            "id": "math-ai-pack",
+            "name": "Math Teacher AI Pack",
+            "category": "Education AI",
+            "version": "V1",
+            "price": "$29",
+            "status": "Active",
+            "page": "math-ai-pack.html",
+            "description": "AI tools for mathematics teachers"
+        },
+        {
+            "id": "futuremind-templates",
+            "name": "FutureMind Templates Pack",
+            "category": "Digital Templates",
+            "version": "V1",
+            "price": "$19",
+            "status": "Coming Soon",
+            "page": "templates.html",
+            "description": "Professional digital templates"
+        }
+    ]
+}
