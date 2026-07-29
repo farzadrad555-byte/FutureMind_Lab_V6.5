@@ -77,5 +77,12 @@
     "thank_you": "Thank You!",
     "order_received": "Your Hunter-X order has been received.",
     "contact_soon": "FutureMind Lab team will contact you soon.",
-    "back_home": "Back To Home"
+    "back_home": "Back To Home",
+    "hunter_platform": "AI Market Intelligence Platform",
+    "professional_reports_text": "Generate actionable intelligence reports.",
+    "risk_analysis_text": "Evaluate risks before making decisions.",
+    "market_scanner_text": "Detect important market movements with intelligent scanning.",
+    "scan_text": "Collect market intelligence and detect movements.",
+    "analyze_text": "Evaluate risk and discover potential opportunities.",
+    "report_text": "Generate professional AI-assisted insights."
 }

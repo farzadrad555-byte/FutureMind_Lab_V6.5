@@ -474,7 +474,7 @@ class Handler(SimpleHTTPRequestHandler):
             }
 
 
-            if STRIPE_ENABLED:
+            if False:
 
                 try:
 
