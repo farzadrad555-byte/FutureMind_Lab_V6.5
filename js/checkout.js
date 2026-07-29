@@ -58,6 +58,40 @@ async function submitOrder(){
                 data.order_id
             );
 
+
+            const payment = await fetch("/api/payment/confirm",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+                    order_id:data.order_id
+                })
+
+            });
+
+
+            const paymentData = await payment.json();
+
+
+            if(paymentData.status === "success"){
+
+                localStorage.setItem(
+                    "download_portal",
+                    paymentData.download_portal
+                );
+
+                localStorage.setItem(
+                    "payment_status",
+                    paymentData.payment_status
+                );
+
+            }
+
+
             window.location.href =
             "order_success.html";
 
