@@ -7,7 +7,7 @@ import secrets
 import sys
 
 sys.path.append(
-    "/content/drive/MyDrive/FutureMind_Lab_V5/admin/security"
+    "/content/drive/MyDrive/FutureMind_Lab_V6.5_LANGUAGE_FIXED_FINAL_20260728/admin/security"
 )
 
 from admin.security.auth import check_login
@@ -15,6 +15,8 @@ from admin.security.auth import check_login
 from payment_config import CRYPTO_CONFIG
 
 from payment.crypto_gateway import create_crypto_payment, confirm_crypto_payment
+from emails.email_logger import save_email_log
+from emails.email_service import create_download_email
 
 
 BASE = Path("/content/drive/MyDrive/FutureMind_Lab_V6.5_LANGUAGE_FIXED_FINAL_20260728")
@@ -608,57 +610,22 @@ class Handler(SimpleHTTPRequestHandler):
 
 
 
-                # Email Logger Auto Connect V6.4
+                # Email Engine Auto Connect V6.5
 
-                email_log_file = BASE / "emails" / "email_log.json"
+                portal_link = "/pages/download.html?token=" + token
 
-
-                if email_log_file.exists():
-
-                    email_logs = json.loads(
-                        email_log_file.read_text(
-                            encoding="utf-8"
-                        )
-                    )
-
-                else:
-
-                    email_logs = []
-
-
-                email_logs.append({
-
-                    "order_id": order_id,
-
-                    "email": order.get("email"),
-
-                    "product": order.get("product"),
-
-                    "portal_link":
-                    "/pages/download.html?token=" + token,
-
-                    "status": "READY",
-
-                    "date": str(datetime.now())
-
-                })
-
-
-                email_log_file.parent.mkdir(
-                    exist_ok=True
+                email_content = create_download_email(
+                    order.get("name", "Customer"),
+                    order.get("product", "Hunter-X V44 Professional"),
+                    order_id,
+                    token
                 )
 
-
-                email_log_file.write_text(
-
-                    json.dumps(
-                        email_logs,
-                        indent=2,
-                        ensure_ascii=False
-                    ),
-
-                    encoding="utf-8"
-
+                save_email_log(
+                    order_id,
+                    order.get("email"),
+                    order.get("product"),
+                    portal_link
                 )
 
 
