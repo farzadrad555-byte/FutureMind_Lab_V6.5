@@ -19,6 +19,21 @@ async function loadLanguage(lang){
 
     });
 
+    
+    document.querySelectorAll("[data-lang-placeholder]").forEach(el=>{
+
+        const key = el.getAttribute("data-lang-placeholder");
+
+        if(texts[key]){
+            el.placeholder = texts[key];
+        }
+        else{
+            console.warn("Missing placeholder translation key:", key);
+        }
+
+    });
+
+
     document.documentElement.dir = lang === "fa" ? "rtl" : "ltr";
     document.documentElement.lang = lang;
 
