@@ -10,7 +10,7 @@ sys.path.append(
     "/content/drive/MyDrive/FutureMind_Lab_V5/admin/security"
 )
 
-from auth import check_login
+from admin.security.auth import check_login
 
 from payment_config import CRYPTO_CONFIG
 
@@ -469,7 +469,7 @@ class Handler(SimpleHTTPRequestHandler):
             }
 
 
-            if STRIPE_ENABLED:
+            if False:
 
                 try:
 

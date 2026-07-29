@@ -1,6 +1,6 @@
 
 import hashlib
-from config import USERNAME, PASSWORD_HASH
+from admin.security.config import USERNAME, PASSWORD_HASH
 
 
 def check_login(username, password):
