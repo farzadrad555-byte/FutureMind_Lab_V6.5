@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="js/market.js"></script>
+</head>
+
+<body>
+
+<h2>FutureMind Lab V7 Market Test</h2>
+
+<button onclick="setMarket('global')">
+🌍 Global
+</button>
+
+<button onclick="setMarket('iran')">
+🇮🇷 Iran
+</button>
+
+<h3 id="result">Loading...</h3>
+
+<script>
+
+loadMarket().then(data=>{
+
+document.getElementById("result").innerHTML =
+JSON.stringify(data);
+
+});
+
+</script>
+
+</body>
+</html>
