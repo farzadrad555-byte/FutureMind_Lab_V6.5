@@ -17,18 +17,26 @@ async function submitOrder(){
         return;
     }
 
+    const market = getMarket();
+
+    const marketData = window.selectedProduct.markets[market];
+
+
     const orderData = {
 
         name: name,
         email: email,
 
+        market: market,
+
         product: window.selectedProduct.name,
         product_id: window.selectedProduct.id,
 
-        amount: window.selectedProduct.price,
+        amount: marketData.price,
 
-        currency: "USD",
-        payment_method: "TEST"
+        currency: marketData.currency,
+
+        payment_method: marketData.payment
 
     };
 

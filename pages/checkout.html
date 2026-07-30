@@ -134,12 +134,17 @@ placeholder="Enter your email" data-lang-placeholder="enter_email">
 </div>
 
 </div>
+<div id="market-info" style="margin-top:20px;text-align:center;">
+<h3 id="market-price"></h3>
+<p id="payment-method"></p>
+</div>
 
 
 <script src="../js/language.js"></script>
 
 
 
+<script src="../js/market.js"></script>
 <script>
 
 window.selectedProduct = null;
@@ -154,7 +159,7 @@ new URLSearchParams(window.location.search).get("id")
 
 
 
-fetch("../products/products.json")
+fetch("../products/products_market_engine.json")
 .then(response => response.json())
 .then(data => {
 
@@ -178,6 +183,31 @@ console.log("PRODUCT DATA:", data);
 console.log("FOUND PRODUCT:", window.selectedProduct);
 
 if(window.selectedProduct){
+
+let market = getMarket();
+
+console.log("CURRENT MARKET:", market);
+
+let marketData = window.selectedProduct.markets ? 
+window.selectedProduct.markets[market] : null;
+
+console.log("CURRENT MARKET:", market);
+console.log("MARKET DATA:", marketData);
+
+if(marketData){
+
+setTimeout(()=>{
+
+document.getElementById("market-price").innerText =
+"Price: " + marketData.price + " " + marketData.currency;
+
+document.getElementById("payment-method").innerText =
+"Payment: " + marketData.payment;
+
+},100);
+
+}
+
 
 document.querySelector(".product-box h1").innerText =
 window.selectedProduct.name;

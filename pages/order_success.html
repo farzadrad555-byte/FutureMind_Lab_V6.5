@@ -40,17 +40,20 @@ class="btn">
 
 async function loadDownload(){
 
-    const response = await fetch(
-        "/api/download?product_id=hunter-x-v44"
-    );
-
-    const data = await response.json();
+    const token = new URLSearchParams(
+        window.location.search
+    ).get("token");
 
 
-    if(data.status === "success"){
+    if(token){
 
         document.getElementById("downloadBtn").href =
-        data.download;
+        "/pages/download.html?token=" + token;
+
+    } else {
+
+        document.getElementById("downloadBtn").innerHTML =
+        "Download link unavailable";
 
     }
 

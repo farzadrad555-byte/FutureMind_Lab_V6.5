@@ -2,10 +2,12 @@
 <html lang="en">
 
 <head>
+<script src="../js/market.js"></script>
+<script src="../js/language.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FutureMind Lab Store</title>
+<title data-lang="store_title">FutureMind Lab Store</title>
 
 <link rel="stylesheet" href="../css/style.css">
 
@@ -70,15 +72,23 @@ FutureMind Lab <span class="highlight">Store</span>
 </h1>
 
 <p>
-AI Products • Education • Trading Intelligence
+<span data-lang="store_subtitle">AI Products • Education • Trading Intelligence</span>
 </p>
 
 </div>
 
 
-<h2 style="text-align:center">
-Featured Products
-</h2>
+<h2 style="text-align:center" data-lang="featured_products">Featured Products</h2>
+<div style="text-align:center;margin:20px;">
+<button onclick="setMarket('global');location.reload()" class="btn">
+🌍 Global
+</button>
+
+<button onclick="setMarket('iran');location.reload()" class="btn">
+🇮🇷 Iran
+</button>
+</div>
+
 
 
 <div class="cards" id="products">
@@ -89,7 +99,7 @@ Loading...
 
 <script>
 
-fetch("../products/products.json")
+fetch("../products/products_market_engine.json")
 
 .then(res=>res.json())
 
@@ -109,11 +119,14 @@ box.innerHTML += `
 
 <h2>${p.name}</h2>
 
-<h3>${p.version}</h3>
+<h3>
+<span data-lang="product_version">Version</span>
+${p.version}
+</h3>
 
 <p>${p.description}</p>
 
-<h2>${p.price}</h2>
+<h2>${p.markets[getMarket()].price} ${p.markets[getMarket()].currency}</h2>
 
 <p class="status">
 ${p.status}
@@ -121,7 +134,7 @@ ${p.status}
 
 
 <a class="btn" href="checkout.html?id=${p.id}">
-View Product
+<span data-lang="view_product">View Product</span>
 </a>
 
 
@@ -131,6 +144,9 @@ View Product
 
 });
 
+if(window.loadLanguage){
+    loadLanguage(localStorage.getItem("language") || "en");
+}
 
 });
 
