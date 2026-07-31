@@ -47,13 +47,30 @@ async function loadDownload(){
 
     if(token){
 
+        localStorage.setItem(
+            "download_token",
+            token
+        );
+
         document.getElementById("downloadBtn").href =
-        "/pages/download.html?token=" + token;
+        "download.html?token=" + token;
 
     } else {
 
-        document.getElementById("downloadBtn").innerHTML =
-        "Download link unavailable";
+        const savedToken =
+        localStorage.getItem("download_token");
+
+        if(savedToken){
+
+            document.getElementById("downloadBtn").href =
+            "download.html?token=" + savedToken;
+
+        } else {
+
+            document.getElementById("downloadBtn").innerHTML =
+            "Download link unavailable";
+
+        }
 
     }
 

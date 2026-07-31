@@ -5,7 +5,7 @@ from pathlib import Path
 from datetime import datetime
 
 
-BASE = Path("/content/drive/MyDrive/FutureMind_Lab_V6.5_CRYPTO_WORK")
+BASE = Path("/content/drive/MyDrive/FutureMind_Lab_V7_RC2_LANGUAGE_COMPLETE_20260730_0740")
 
 TOKENS_FILE = BASE / "orders" / "download_tokens.json"
 

@@ -1,10 +1,9 @@
-
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from pathlib import Path
 import sys
 
-BASE = Path("/content/drive/MyDrive/FutureMind_Lab_V6.5_CRYPTO_WORK")
+BASE = Path("/content/drive/MyDrive/FutureMind_Lab_V7_RC2_LANGUAGE_COMPLETE_20260730_0740")
 
 ORDERS = BASE / "orders" / "orders.json"
 
@@ -18,7 +17,7 @@ class PaymentConfirmHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
 
-        if self.path.endswith("/confirm"):
+        try:
 
             length = int(self.headers["Content-Length"])
             data = self.rfile.read(length)
@@ -40,28 +39,25 @@ class PaymentConfirmHandler(BaseHTTPRequestHandler):
 
                 if order.get("order_id") == order_id:
 
+                    if "payment" not in order:
+                        order["payment"] = {}
+
                     order["payment"]["tx_hash"] = tx_hash
                     order["payment"]["status"] = payment["status"]
                     order["payment_status"] = "PAID"
 
-                    token_data = create_download_token(
+                    result = create_download_token(
                         order_id,
-                        order.get("product")
+                        order.get("product_id")
                     )
 
-                    order["download"] = token_data
-
-                    result = token_data
+                    order["download"] = result
 
 
             ORDERS.write_text(
-                json.dumps(
-                    orders,
-                    indent=2
-                ),
+                json.dumps(orders, indent=2),
                 encoding="utf-8"
             )
-
 
             self.send_response(200)
             self.end_headers()
@@ -69,16 +65,23 @@ class PaymentConfirmHandler(BaseHTTPRequestHandler):
             self.wfile.write(
                 json.dumps({
                     "status": "success",
-                    "order_id": order_id,
-                    "payment_status": "PAID",
                     "download": result
                 }).encode("utf-8")
             )
 
 
-        else:
-            self.send_response(404)
+        except Exception as e:
+
+            print("PAYMENT ERROR:", repr(e))
+
+            self.send_response(500)
             self.end_headers()
+
+            self.wfile.write(
+                json.dumps({
+                    "error": str(e)
+                }).encode("utf-8")
+            )
 
 
 server = HTTPServer(

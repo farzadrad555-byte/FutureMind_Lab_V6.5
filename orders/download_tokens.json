@@ -21,14 +21,6 @@
     "date": "2026-07-26 08:03:49.038354"
   },
   {
-<<<<<<< HEAD
-    "order_id": "FM-D99CECFB",
-    "product_id": "hunter-x-v44",
-    "token": "0fc0deb4f8e163e05239bcd03591c730",
-    "status": "ACTIVE",
-    "date": "2026-07-28 22:01:20.683598"
-  },
-  {
     "order_id": "FM-DD62D4A2",
     "product_id": "hunter-x-v44",
     "token": "4499501c9bcbf6203442bbd5b5a85a35",
@@ -43,24 +35,34 @@
     "date": "2026-07-28 22:17:13.527393"
   },
   {
-    "order_id": "FM-D6CE8AD6",
-    "product_id": "hunter-x-v44",
-    "token": "0effaa1d78bba6f6a65ae4f2ad36539d",
-    "status": "ACTIVE",
-    "date": "2026-07-29 08:45:38.401587"
-=======
-    "order_id": "FM-6D84C1FA",
-    "product_id": "hunter-x-v44",
-    "token": "d5f3c66a391bc93a6f79b0205e89d454",
-    "status": "ACTIVE",
-    "date": "2026-07-28 07:33:45.846180"
-  },
-  {
     "order_id": "FM-7F6FD488",
     "product_id": "hunter-x-v44",
     "token": "44da61931d82cd319f4588f3e889ebb5",
     "status": "ACTIVE",
     "date": "2026-07-28 21:06:46.412042"
->>>>>>> origin/main
+  },
+  {
+    "token": "9207e591821027b0dd98859540cfc3de",
+    "order_id": "TEST-DEBUG-0001",
+    "product": "hunter-x-v44",
+    "status": "ACTIVE",
+    "created": "2026-07-31 00:07:35.544313",
+    "downloads": 0
+  },
+  {
+    "token": "b5df4bc0959192dc831e6a0aa7cd6b7b",
+    "order_id": "FM-F77E268F",
+    "product": "hunter-x-v44",
+    "status": "ACTIVE",
+    "created": "2026-07-31 00:09:10.938925",
+    "downloads": 0
+  },
+  {
+    "token": "a4de915b2e00a62a3f2c7f6b8e06e665",
+    "order_id": "FM-F77E268F",
+    "product": "hunter-x-v44",
+    "status": "ACTIVE",
+    "created": "2026-07-31 00:20:05.729211",
+    "downloads": 0
   }
 ]

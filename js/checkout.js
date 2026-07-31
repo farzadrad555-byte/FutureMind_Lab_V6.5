@@ -100,8 +100,11 @@ async function submitOrder(){
             }
 
 
+            const token =
+            paymentData.download.token;
+
             window.location.href =
-            "order_success.html";
+            "order_success.html?token=" + token;
 
         }
         else{
